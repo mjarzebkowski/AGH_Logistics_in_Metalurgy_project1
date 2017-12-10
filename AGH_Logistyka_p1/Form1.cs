@@ -26,18 +26,45 @@ namespace AGH_Logistyka_p1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            cPMElementBindingSource1.DataSource= new List<CPM_Element>();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //zapisz
- 
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = @"CSV|.csv", ValidateNames = true })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    using (var sw = new StreamWriter(sfd.FileName))
+                    {
+                        var writer = new CsvWriter(sw);
+                        writer.WriteHeader(typeof(CPM_Element));
+                        writer.NextRecord();
+                        writer.WriteRecords((List<CPM_Element>)cPMElementBindingSource1.DataSource);
+                        //foreach (CPM_Element s in (List<CPM_Element>)cPMElementBindingSource1.DataSource)
+                        //{
+                            
+                        //}
+                    }
+                    MessageBox.Show("Dane zapisane", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
+    
 
         private void button2_Click(object sender, EventArgs e)
         {
             //otwórz
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = @"CSV|.csv", ValidateNames = true })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    var sr = new StreamReader(new FileStream(ofd.FileName, FileMode.Open));
+                    var csv = new CsvReader(sr);
+                    cPMElementBindingSource1.DataSource = csv.GetRecords<CPM_Element>();
+                }
+            }
 
         }
 
@@ -59,6 +86,11 @@ namespace AGH_Logistyka_p1
         private void chart1_Click(object sender, EventArgs e)
         {
             //wykres
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
 
