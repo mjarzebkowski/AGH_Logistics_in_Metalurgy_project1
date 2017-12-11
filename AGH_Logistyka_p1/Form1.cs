@@ -26,7 +26,9 @@ namespace AGH_Logistyka_p1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cPMElementBindingSource1.DataSource= new List<CPM_Element>();
+            cPMElementBindingSource2.DataSource  = new List<CPM_Element>();
+            criticalPathBindingSource.DataSource = new List<CriticalPath>();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,8 +43,8 @@ namespace AGH_Logistyka_p1
                         var writer = new CsvWriter(sw);
                         writer.WriteHeader(typeof(CPM_Element));
                         writer.NextRecord();
-                        writer.WriteRecords((List<CPM_Element>)cPMElementBindingSource1.DataSource);
-                        //foreach (CPM_Element s in (List<CPM_Element>)cPMElementBindingSource1.DataSource)
+                        writer.WriteRecords((List<CPM_Element>)cPMElementBindingSource2.DataSource);
+                        //foreach (CPM_Element s in (List<CPM_Element>)cPMElementBindingSource2.DataSource)
                         //{
                             
                         //}
@@ -62,7 +64,7 @@ namespace AGH_Logistyka_p1
                 {
                     var sr = new StreamReader(new FileStream(ofd.FileName, FileMode.Open));
                     var csv = new CsvReader(sr);
-                    cPMElementBindingSource1.DataSource = csv.GetRecords<CPM_Element>();
+                    cPMElementBindingSource2.DataSource = csv.GetRecords<CPM_Element>();
                 }
             }
 
@@ -81,6 +83,7 @@ namespace AGH_Logistyka_p1
         private void button3_Click(object sender, EventArgs e)
         {
             //przelicz
+            criticalPathBindingSource.DataSource = cPMElementBindingSource2.DataSource;
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -89,6 +92,11 @@ namespace AGH_Logistyka_p1
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

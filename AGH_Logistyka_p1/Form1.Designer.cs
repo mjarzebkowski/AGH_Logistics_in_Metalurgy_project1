@@ -44,27 +44,31 @@
             this.button3 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tcDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.t0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPMElementBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cPMElementBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tmDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.t0DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPMElementBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.t0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPMElementBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cPMElementBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.criticalPathBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cPMElementBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cPMElementBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cPMElementBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cPMElementBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criticalPathBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,7 +114,7 @@
             this.tmDataGridViewTextBoxColumn,
             this.tpDataGridViewTextBoxColumn,
             this.t0DataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.cPMElementBindingSource1;
+            this.dataGridView1.DataSource = this.cPMElementBindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(214, 216);
@@ -158,11 +162,12 @@
             this.tmDataGridViewTextBoxColumn1,
             this.tpDataGridViewTextBoxColumn1,
             this.t0DataGridViewTextBoxColumn1});
-            this.dataGridView2.DataSource = this.cPMElementBindingSource1;
+            this.dataGridView2.DataSource = this.criticalPathBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(6, 19);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(214, 173);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // chart1
             // 
@@ -201,50 +206,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // tcDataGridViewTextBoxColumn
-            // 
-            this.tcDataGridViewTextBoxColumn.DataPropertyName = "tc";
-            this.tcDataGridViewTextBoxColumn.HeaderText = "tc";
-            this.tcDataGridViewTextBoxColumn.Name = "tcDataGridViewTextBoxColumn";
-            // 
-            // tmDataGridViewTextBoxColumn
-            // 
-            this.tmDataGridViewTextBoxColumn.DataPropertyName = "tm";
-            this.tmDataGridViewTextBoxColumn.HeaderText = "tm";
-            this.tmDataGridViewTextBoxColumn.Name = "tmDataGridViewTextBoxColumn";
-            // 
-            // tpDataGridViewTextBoxColumn
-            // 
-            this.tpDataGridViewTextBoxColumn.DataPropertyName = "tp";
-            this.tpDataGridViewTextBoxColumn.HeaderText = "tp";
-            this.tpDataGridViewTextBoxColumn.Name = "tpDataGridViewTextBoxColumn";
-            // 
-            // t0DataGridViewTextBoxColumn
-            // 
-            this.t0DataGridViewTextBoxColumn.DataPropertyName = "t0";
-            this.t0DataGridViewTextBoxColumn.HeaderText = "t0";
-            this.t0DataGridViewTextBoxColumn.Name = "t0DataGridViewTextBoxColumn";
-            // 
-            // cPMElementBindingSource
-            // 
-            this.cPMElementBindingSource.DataSource = typeof(AGH_Logistyka_p1.CPM_Element);
-            // 
-            // cPMElementBindingSource1
-            // 
-            this.cPMElementBindingSource1.DataSource = typeof(AGH_Logistyka_p1.CPM_Element);
-            // 
             // idDataGridViewTextBoxColumn1
             // 
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
@@ -281,6 +242,58 @@
             this.t0DataGridViewTextBoxColumn1.HeaderText = "t0";
             this.t0DataGridViewTextBoxColumn1.Name = "t0DataGridViewTextBoxColumn1";
             // 
+            // cPMElementBindingSource2
+            // 
+            this.cPMElementBindingSource2.DataSource = typeof(AGH_Logistyka_p1.CPM_Element);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // tcDataGridViewTextBoxColumn
+            // 
+            this.tcDataGridViewTextBoxColumn.DataPropertyName = "tc";
+            this.tcDataGridViewTextBoxColumn.HeaderText = "tc";
+            this.tcDataGridViewTextBoxColumn.Name = "tcDataGridViewTextBoxColumn";
+            // 
+            // tmDataGridViewTextBoxColumn
+            // 
+            this.tmDataGridViewTextBoxColumn.DataPropertyName = "tm";
+            this.tmDataGridViewTextBoxColumn.HeaderText = "tm";
+            this.tmDataGridViewTextBoxColumn.Name = "tmDataGridViewTextBoxColumn";
+            // 
+            // tpDataGridViewTextBoxColumn
+            // 
+            this.tpDataGridViewTextBoxColumn.DataPropertyName = "tp";
+            this.tpDataGridViewTextBoxColumn.HeaderText = "tp";
+            this.tpDataGridViewTextBoxColumn.Name = "tpDataGridViewTextBoxColumn";
+            // 
+            // t0DataGridViewTextBoxColumn
+            // 
+            this.t0DataGridViewTextBoxColumn.DataPropertyName = "t0";
+            this.t0DataGridViewTextBoxColumn.HeaderText = "t0";
+            this.t0DataGridViewTextBoxColumn.Name = "t0DataGridViewTextBoxColumn";
+            // 
+            // cPMElementBindingSource1
+            // 
+            this.cPMElementBindingSource1.DataSource = typeof(AGH_Logistyka_p1.CPM_Element);
+            // 
+            // cPMElementBindingSource
+            // 
+            this.cPMElementBindingSource.DataSource = typeof(AGH_Logistyka_p1.CPM_Element);
+            // 
+            // criticalPathBindingSource
+            // 
+            this.criticalPathBindingSource.DataSource = typeof(AGH_Logistyka_p1.CriticalPath);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,8 +313,10 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cPMElementBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cPMElementBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cPMElementBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cPMElementBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criticalPathBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,6 +349,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tmDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tpDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn t0DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource cPMElementBindingSource2;
+        private System.Windows.Forms.BindingSource criticalPathBindingSource;
     }
 }
 

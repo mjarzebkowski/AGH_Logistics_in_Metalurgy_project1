@@ -8,21 +8,15 @@ namespace AGH_Logistyka_p1
 {
     public class CPM_Element
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } //nazwa 
 
-        public string tc { get; set; }
+        public int tc { get; set; }
 
-        public string tm { get; set; }
+        public int tm { get; set; }
 
-        public string tp { get; set; }
+        public int tp { get; set; }
 
-        public string t0 { get; set; }
-
-
-
-
-
-
+        public int t0 { get; set; }
     }
 }
