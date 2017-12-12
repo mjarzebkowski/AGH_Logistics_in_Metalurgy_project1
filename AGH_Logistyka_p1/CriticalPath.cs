@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AGH_Logistyka_p1
 {
@@ -13,13 +15,22 @@ namespace AGH_Logistyka_p1
         private int[] possiblePachs;
         public byte view = 0;
 
-        public int[] SetStartTime(CriticalPath elemCriticalPath)
+        //DataTable CPM = (DataTable)BindingSource.
+
+        private int[] SetPossiblePatchs(CriticalPath elemCriticalPath)
         {
-            // ten potworek wyciąga wszystkie numery ścieżek oddzielone przecinkiem, z pola Name. Pomija śmieci
             var ints = from field in elemCriticalPath.Name.Split(',').Where((x) => { int dummy; return Int32.TryParse(x, out dummy); })
                 select Int32.Parse(field);
-            return ints.ToArray();
+            return possiblePachs = ints.ToArray();
         }
+
+        //public int[] SetStartTime(CriticalPath elemCriticalPath)
+        //{
+        //    // ten potworek wyciąga wszystkie numery ścieżek oddzielone przecinkiem, z pola Name. Pomija śmieci
+        //    var ints = from field in elemCriticalPath.Name.Split(',').Where((x) => { int dummy; return Int32.TryParse(x, out dummy); })
+        //        select Int32.Parse(field);
+        //    return ints.ToArray();
+        //}
 
         int CalculateCpmElementStartTime(CriticalPath previousElement)
         {
@@ -30,16 +41,26 @@ namespace AGH_Logistyka_p1
 
 
         //List<CPM_Element> _crcPath = new List<CPM_Element>();
-        public List<CPM_Element> CalculatePath(List<CPM_Element> projectList)
-        {
-            List<CPM_Element> crcPath = new List<CPM_Element>();
+        //public static void CalculatePath(List<CriticalPath> projectList)
+        //{
+        //    foreach ( possiblePachs s in projectList)
+        //    {
+                
+        //    }
+        //    projectList[projectList.Count()].possiblePachs = SetPossiblePatchs();
+                
+                
+        //        .possiblePachs.;
 
+            //weż element o najwyższym oczku
+            //w których ścieżkach uczestniczy ?
 
+            //foreach dla tych wszystkich ścieżek ustaw czas odpowiadających im t0, jeśl jest mniejszy niż ścieżka
 
+            //powtórz w głąb, jeśli nie jeden
 
+            // przelicz widoczność
 
-
-            return crcPath;
         }
 
 
@@ -61,20 +82,14 @@ namespace AGH_Logistyka_p1
         //}
 
 
+        //public static void CalculatePatch(object dataSource)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+        //public static int CountCRCElements()
+        //{
+        //    throw new NotImplementedException();
+        //}
+    //}
 }

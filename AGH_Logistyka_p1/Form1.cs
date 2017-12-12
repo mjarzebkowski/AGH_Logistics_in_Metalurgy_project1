@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace AGH_Logistyka_p1
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -82,8 +84,37 @@ namespace AGH_Logistyka_p1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            List<CriticalPath> CRCPath = (List<CriticalPath>)cPMElementBindingSource2.DataSource;
+            //CriticalPath.CalculatePath(CRCPath);
+
+
+
+
+            //foreach (CriticalPath mCriticalPath in CRCPath)
+            //{
+            //    mCriticalPath.
+            //}
+
+            //CriticalPath.CalculatePath(cPMElementBindingSource2.DataSource.
+
+
+
+
+            //DataTable CRCPath = new DataTable();
+            //CRCPath.BeginLoadData();
+            //CRCPath.DataSet.
+
+            //criticalPathBindingSource.AddNew().
+            //criticalPathBindingSource.Current.row.item("Name") = "";
+
+            //(CriticalPath.CountCRCElements()) = List<>;
+
+            //    CriticalPath.CalculatePatch(cPMElementBindingSource2.DataSource);
+
+            //    int CRCElem = ;
+
             //przelicz
-            criticalPathBindingSource.DataSource = cPMElementBindingSource2.DataSource;
+            //criticalPathBindingSource.DataSource = cPMElementBindingSource2.
         }
 
         private void chart1_Click(object sender, EventArgs e)
