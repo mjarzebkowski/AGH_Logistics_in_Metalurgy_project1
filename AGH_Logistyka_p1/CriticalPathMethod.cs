@@ -10,7 +10,10 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using AGH_Logistyka_p1;
 using CriticalPathMethod;
 
 namespace ComputerEngineering
@@ -30,38 +33,45 @@ namespace ComputerEngineering
     /// </summary>
     private static int na;
 
-    private static void Main(string[] args)
-    {
-      do
+        //private static void Main(string[] args)
+        //{
+        //  do
+        //  {
+        //    //Console.BackgroundColor = ConsoleColor.White;
+        //    //Console.ForegroundColor = ConsoleColor.Black;
+
+        //    Console.Clear();
+
+        //    Console.Title = "CPM - Critical Path Method C# Sample Application";
+
+        //    // Prints startup banner
+        //    Console.Write("\nCPM - Critical Path Method C# Sample Application\n");
+        //    Console.Write("Copyright ©2006 Leniel Braz de Oliveira Macaferi & Wellington Magalhães Leite.\n\n");
+        //    Console.Write("UBM COMPUTER ENGINEERING - 7TH TERM [http://www.ubm.br/]\n\n");
+
+        //    Console.Write("This program example demonstrates the Critical Path Method's algorithm.\n");
+
+        //    // Array to store the activities that'll be evaluated.
+        //    Activity[] list = null;
+
+        //    list = GetActivities(list);
+        //    list = WalkListAhead(list);
+        //    list = WalkListAback(list);
+
+        //    CriticalPath(list);
+
+        //    Console.Write(" Do you wanna a new critical path solution? y\\n: ");
+        //  }
+        //  while(Console.ReadKey().KeyChar == 'y' || Console.ReadKey().KeyChar == 'Y');
+      //}
+
+        public Activity[] MainCalculate(Activity[] list)
       {
-        //Console.BackgroundColor = ConsoleColor.White;
-        //Console.ForegroundColor = ConsoleColor.Black;
-
-        Console.Clear();
-
-        Console.Title = "CPM - Critical Path Method C# Sample Application";
-
-        // Prints startup banner
-        Console.Write("\nCPM - Critical Path Method C# Sample Application\n");
-        Console.Write("Copyright ©2006 Leniel Braz de Oliveira Macaferi & Wellington Magalhães Leite.\n\n");
-        Console.Write("UBM COMPUTER ENGINEERING - 7TH TERM [http://www.ubm.br/]\n\n");
-
-        Console.Write("This program example demonstrates the Critical Path Method's algorithm.\n");
-
-        // Array to store the activities that'll be evaluated.
-        Activity[] list = null;
-
-        list = GetActivities(list);
-        list = WalkListAhead(list);
-        list = WalkListAback(list);
-
-        CriticalPath(list);
-
-        Console.Write(" Do you wanna a new critical path solution? y\\n: ");
+          list = WalkListAhead(list);
+          list = WalkListAback(list);
+          CriticalPath(list);
+          return list;
       }
-      while(Console.ReadKey().KeyChar == 'y' || Console.ReadKey().KeyChar == 'Y');
-    }
-
     /// <summary>
     /// Gets the activities that'll be evaluated by the critical path method.
     /// </summary>
@@ -192,7 +202,7 @@ namespace ComputerEngineering
     /// criteria. Plus, prints out the project's total duration. 
     /// </summary>
     /// <param name="list">Array containg the activities already entered.</param>
-    private static void CriticalPath(Activity[] list)
+    public static void CriticalPath(Activity[] list)
     {
       Console.Write("\n          Critical Path: ");
 

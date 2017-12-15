@@ -9,7 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CriticalPathMethod;
 using CsvHelper;
+
 
 namespace AGH_Logistyka_p1
 {
@@ -84,9 +86,12 @@ namespace AGH_Logistyka_p1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            List<CriticalPath> CRCPath = (List<CriticalPath>)cPMElementBindingSource2.DataSource;
-            //CriticalPath.CalculatePath(CRCPath);
+            List<CriticalPath> crcPath = (List<CriticalPath>)cPMElementBindingSource2.DataSource;
 
+
+            //Activity[] act = act.
+            ////CriticalPath.CalculatePath(CRCPath);
+            //act.M
 
 
 

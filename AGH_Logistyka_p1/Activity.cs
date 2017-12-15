@@ -10,7 +10,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using AGH_Logistyka_p1;
 
 namespace CriticalPathMethod
 {
@@ -28,8 +30,9 @@ namespace CriticalPathMethod
     private int let;
     private Activity[] successors;
     private Activity[] predecessors;
+    private static int na;
 
-    public Activity()
+        public Activity()
     {
       // TODO: Add Constructor Logic here
     }
@@ -234,6 +237,65 @@ namespace CriticalPathMethod
       }
       return aux;
     }
-  }
+
+      public static Activity[] CastCrcPatchToActivityList(List<CriticalPath> crcList)
+      {
+          if (crcList.Count == 0) throw new ArgumentException("Value cannot be an empty collection.", nameof(crcList));
+          
+          if (crcList.Count < 2)
+          {
+              na = crcList.Count;
+          }
+          else
+          {
+              // not implemented
+          }
+
+          Activity[] list = new Activity[na];
+
+          for (int i = 0; i < na; i++)
+          {
+              Activity activity = new Activity();
+              activity.Id = crcList[i].Id;
+              activity.Description = crcList[i].Name;
+              activity.Duration = crcList[i].t0;
+              int np = crcList[i].possiblePachs.Count();
+
+              if (np != 0)
+              {
+                  activity.Predecessors = new Activity[np];
+
+                  string id;
+
+                  for (int j = 0; j < np; j++)
+                  {
+                      //Console.Write("    #{0} predecessor's ID: ", j + 1);
+                      id = crcList[i].possiblePachs[j].ToString();
+
+                      Activity aux = new Activity();
+
+                      if ((aux = aux.CheckActivity(list, id, i)) != null)
+                      {
+                          activity.Predecessors[j] = aux;
+
+                          list[aux.GetIndex(list, aux, i)] = aux.SetSuccessors(aux, activity);
+                      }
+                      else
+                      {
+                          //Console.Beep();
+                          //Console.Write("\n No match found! Try again.\n\n");
+                          j--;
+                      }
+                  }
+              }
+              list[i] = activity;
+          }
+
+          return list;
+      }
+
+
+
+    }
 }
 

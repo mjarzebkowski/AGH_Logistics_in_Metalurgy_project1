@@ -5,33 +5,87 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CriticalPathMethod;
 
 namespace AGH_Logistyka_p1
 {
     public class CriticalPath : CPM_Element
     {
+        public CriticalPath()
+        {
+            
+        }
+
+        public CriticalPath( Activity[] readyCRCList )
+        {
+
+        }
+
+
+
         public static string criticalPathString { set; get; }
         public int startTime;
-        private int[] possiblePachs;
+        public int[] possiblePachs;
         public byte view = 0;
         private CriticalPath nexTCriticalPath;
         private CriticalPath previousCriticalPath;
+        private Activity[] list;
+        private static int na;
+        
+        public static Activity[] CastCrcPatchToActivityList( List<CriticalPath> CRCList )
+        {
+            if (CRCList.Count < 2)
+            {
+                na = CRCList.Count;
+            }
+            else
+            {
+                // not implemented
+            }
 
-        //static CriticalPath getByID(int ID)
-        //{
+            Activity[] list = new Activity[na];
 
-        //    //return 
-        //}
+            for (int i = 0; i < na; i++)
+            {
+                Activity activity = new Activity();
+                activity.Id = CRCList[i].Id;
+                activity.Description = CRCList[i].Name;
+                activity.Duration = CRCList[i].t0;
+                int np = CRCList[i].possiblePachs.Count();
 
-        //DataTable CPM = (DataTable)BindingSource.
+                if (np != 0)
+                {
+                    activity.Predecessors = new Activity[np];
 
-        //private int[] SetPossiblePatchs(CriticalPath elemCriticalPath)
-        //{
-        //    // ten potworek wyciąga wszystkie numery ścieżek oddzielone przecinkiem, z pola Name. Pomija śmieci
-        //    var ints = from field in elemCriticalPath.Name.Split(',').Where((x) => { int dummy; return Int32.TryParse(x, out dummy); })
-        //        select Int32.Parse(field);
-        //    return possiblePachs = ints.ToArray();
-        //}
+                    string id;
+
+                    for (int j = 0; j < np; j++)
+                    {
+                        //Console.Write("    #{0} predecessor's ID: ", j + 1);
+                        id = CRCList[i].possiblePachs[j].ToString();
+
+                        Activity aux = new Activity();
+
+                        if ((aux = aux.CheckActivity(list, id, i)) != null)
+                        {
+                            activity.Predecessors[j] = aux;
+
+                            list[aux.GetIndex(list, aux, i)] = aux.SetSuccessors(aux, activity);
+                        }
+                        else
+                        {
+                            //Console.Beep();
+                            //Console.Write("\n No match found! Try again.\n\n");
+                            j--;
+                        }
+                    }
+                }
+                list[i] = activity;
+            }
+
+            return list;
+        }
+
 
         public void SetPossiblePatchs(CriticalPath elemCriticalPath)
         {
@@ -41,15 +95,6 @@ namespace AGH_Logistyka_p1
                 select Int32.Parse(field);
             possiblePachs = ints.ToArray();
         }
-
-        //public void SetPossiblePatchs(CriticalPath elemCriticalPath)
-        //{
-        //    // ten potworek wyciąga wszystkie numery ścieżek oddzielone przecinkiem, z pola Name. Pomija śmieci
-        //    var ints = from field in elemCriticalPath.Name.Split(',').Where((x) => { int dummy; return Int32.TryParse(x, out dummy);
-        //        })
-        //        select Int32.Parse(field);
-        //    possiblePachs = ints.ToArray();
-        //}
 
         public int[] SetStartTime(CriticalPath elemCriticalPath)
         {
@@ -64,47 +109,6 @@ namespace AGH_Logistyka_p1
             return previousElement.t0 + previousElement.startTime;
         }
 
-        private static CriticalPath[] WalkListAhead(CriticalPath[] list)
-        {
-            list[0].Eet = list[0].Est + list[0].t0;
-
-            for (int i = 1; i < na; i++)
-            {
-                foreach (CriticalPath activity in list[i].Predecessors)
-                {
-                    if (list[i].Est < activity.Eet)
-                        list[i].Est = activity.Eet;
-                }
-
-                list[i].Eet = list[i].Est + list[i].t0;
-            }
-
-            return list;
-        }
-
-        private static CriticalPath[] WalkListAback(CriticalPath[] list)
-        {
-            list[na - 1].Let = list[na - 1].Eet;
-            list[na - 1].Lst = list[na - 1].Let - list[na - 1].t0;
-
-            for (int i = na - 2; i >= 0; i--)
-            {
-                foreach (CriticalPath activity in list[i].Successors)
-                {
-                    if (list[i].Let == 0)
-                        list[i].Let = activity.Lst;
-                    else
-                    if (list[i].Let > activity.Lst)
-                        list[i].Let = activity.Lst;
-                }
-
-                list[i].Lst = list[i].Let - list[i].t0;
-            }
-
-            return list;
-        }
-
-
         List<CPM_Element> _crcPath = new List<CPM_Element>();
         public static void CalculatePath(List<CriticalPath> projectList)
         {
@@ -112,71 +116,12 @@ namespace AGH_Logistyka_p1
 
             foreach ( CriticalPath s in projectList )
             {
-                s.SetPossiblePatchs(s);
-                //s.possiblePachs.Max()
-
-                int start = s.possiblePachs[0];
-                int finish = s.possiblePachs[1];
-
-
-                
-
-
-                //s.Id;
 
             }
-            
-            //projectList.Sort(  );
-            //weż element o najwyższym oczku
-            //w których ścieżkach uczestniczy ?
-
-            //foreach dla tych wszystkich ścieżek ustaw czas odpowiadających im t0, jeśl jest mniejszy niż ścieżka
-
-            //powtórz w głąb, jeśli nie jeden
-
-            // przelicz widoczność
-
         }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         //https://www.codeproject.com/Articles/25312/Critical-Path-Method-Implementation-in-C
-
-        //public class Activity
-        //{
-        //    private string id; // Id
-        //    private string description;
-        //    private int duration; // t0
-        //    private int est; 
-        //    private int lst;
-        //    private int eet;
-        //    private int let;
-        //    private Activity[] successors;
-        //    private Activity[] predecessors;
-
-        //        ...
-        //}
-
-
-        //public static void CalculatePatch(object dataSource)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public static int CountCRCElements()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
